@@ -1,0 +1,84 @@
+Problem 1: Parse Tree and Leftmost Derivation
+statement
+    |
+assignment
+    /|\
+iden = exp
+ |      |
+ A     term
+        /|\
+   term  *  fac
+    |       /|\
+   iden    (exp)
+    |        |
+    B       term
+            /|\ 
+        term * fact
+          |     /|\
+        fact   (exp)
+         |      /|\
+       iden   exp + term
+         |     |     |
+         C    term  fact
+               |     |
+              fact  iden
+               |     |
+              iden   B
+               | 
+               A
+
+
+Problem 2: Scope Concepts
+____________________________________
+
+a.) Static:
+global variables:
+u = 42
+v = 69
+w = 17
+
+foo(u, 13) -> f(x = 42, w = 13)
+    int v = x = 42
+    bar(add)
+        int u = w = 17
+        fun(v) -> add(v) - > add(z = 69)
+            u = v + u + z = 69 + 42 + 69 = 180
+print(u) = 180
+_____________________________________
+
+b.) Dynamic Deep:
+global variables:
+u = 17
+v = 42
+w = 17
+
+foo(u, 13) -> f(x = 42, w = 13)
+    int v = x = 42
+    bar(add)
+        int u = w = 17
+        fun(v) -> add(v) - > add(z = 42)
+            u = v + u + z = 42 + 42 + 42 = 126
+print(u) = 126
+
+______________________________________
+
+c.) Dynamic Shallow:
+u = 17
+v = 42
+w = 17
+
+foo(u, 13) -> f(x = 42, w = 13)
+    int v = x = 42
+    bar(add)
+        int u = w = 17
+        fun(v) -> add(v) - > add(z = 42)
+            u = v + u + z = 42 + 17 + 42 = 101
+print(u) = 101
+
+
+
+
+
+
+
+
